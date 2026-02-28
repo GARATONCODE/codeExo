@@ -84,12 +84,13 @@ async function runPython(code: string, tests: string, workDir: string): Promise<
 }
 
 async function runTypescript(code: string, tests: string, workDir: string): Promise<RunResult> {
-  const combined = `${code}\n\n// --- TESTS ---\n${tests}`;
   const srcFile = join(workDir, "solution.ts");
+  const testFile = join(workDir, "tests.ts");
 
-  await writeFile(srcFile, combined);
+  await writeFile(srcFile, code);
+  await writeFile(testFile, tests);
 
-  const run = await runInSandbox("npx", ["tsx", srcFile], workDir, MAX_TIMEOUT);
+  const run = await runInSandbox("npx", ["tsx", testFile], workDir, MAX_TIMEOUT);
   if (run.exitCode !== 0) {
     return {
       status: run.stderr.includes("timeout") ? "timeout" : "failure",
