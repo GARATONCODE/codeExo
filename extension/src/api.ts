@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-const DEFAULT_API_URL = "http://localhost:3001/api/v1";
+const DEFAULT_API_URL = "https://backend-production-387d.up.railway.app/api/v1";
 
 export class ApiClient {
   private client: AxiosInstance;
