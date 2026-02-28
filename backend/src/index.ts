@@ -13,6 +13,9 @@ import dailyRouter from "./routes/daily.js";
 const app = express();
 const PORT = parseInt(process.env.PORT || "3001", 10);
 
+// Trust Railway/Vercel reverse proxy
+app.set("trust proxy", 1);
+
 // Security middleware
 app.use(helmet());
 app.use(cors({ origin: process.env.CORS_ORIGIN || "http://localhost:3000", credentials: true }));
