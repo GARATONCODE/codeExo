@@ -1,0 +1,72 @@
+{
+  "name": "codeexo",
+  "displayName": "CodeExo - Exercices de Code",
+  "description": "Extension VS Code pour la plateforme CodeExo",
+  "version": "1.0.0",
+  "publisher": "codeexo",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Education"],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeexo.login",
+        "title": "CodeExo: Connexion"
+      },
+      {
+        "command": "codeexo.logout",
+        "title": "CodeExo: Déconnexion"
+      },
+      {
+        "command": "codeexo.dailyExercise",
+        "title": "CodeExo: Exercice du jour"
+      },
+      {
+        "command": "codeexo.submitCode",
+        "title": "CodeExo: Soumettre le code"
+      },
+      {
+        "command": "codeexo.selectLanguage",
+        "title": "CodeExo: Sélectionner le langage"
+      },
+      {
+        "command": "codeexo.refreshExercises",
+        "title": "CodeExo: Rafraîchir les exercices"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeexo",
+          "title": "CodeExo",
+          "icon": "$(code)"
+        }
+      ]
+    },
+    "views": {
+      "codeexo": [
+        {
+          "id": "codeexo.exercises",
+          "name": "Exercices"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "npm run build -- --watch",
+    "package": "npm run build -- --minify && npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.14.0",
+    "esbuild": "^0.21.5",
+    "typescript": "^5.5.0"
+  }
+}

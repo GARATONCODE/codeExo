@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "google-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-google-search"
+      ],
+      "env": {
+        "GOOGLE_SEARCH_ENGINE_ID": "07ac15ad14abe4602",
+        "GOOGLE_API_KEY": "AIzaSyD46VfERjO0P2PRK9dL4Gl92z9fm8FUOxI"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/kali/Projet/SitePortfolioFanny"
+      ]
+    }
+  }
+}
